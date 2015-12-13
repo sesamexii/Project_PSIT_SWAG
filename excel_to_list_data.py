@@ -30,5 +30,5 @@ def sortsheet(file_dir, prov_max=100):
             list_pos = 0
         data_slot[list_pos] = temp
     return data_slot
-
-sortsheet(str(input("Enter data directory: ")))
+#uncomment below to see output
+##print(sortsheet(str(input("Enter data directory: "))))
