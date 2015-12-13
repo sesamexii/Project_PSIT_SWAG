@@ -76,16 +76,16 @@ def top_part():
     coun = 1
     for i in top[::-1]:
         if i == central:
-            print(str(coun)+" : Central")
+            print(str(coun)+" : Central " + str(int(i)))
         elif i == west:
-            print(str(coun)+" : West")
+            print(str(coun)+" : West " + str(int(i)))
         elif i == east:
-            print(str(coun)+" : East")
+            print(str(coun)+" : East " + str(int(i)))
         elif i == north:
-            print(str(coun)+" : North")
+            print(str(coun)+" : North " + str(int(i)))
         elif i == south:
-            print(str(coun)+" : South")
+            print(str(coun)+" : South " + str(int(i)))
         else:
-            print(str(coun)+" : NorthEast")
+            print(str(coun)+" : NorthEast " + str(int(i)))
         coun += 1
 top_part()
