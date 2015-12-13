@@ -1,5 +1,6 @@
 """Top part"""
 import xlrd
+import pygal
 def top_part():
     """Arrange suicide of part by maximun to minimun"""
     central, west, east, north, south, north_e = 0, 0, 0, 0, 0, 0
@@ -88,4 +89,13 @@ def top_part():
         else:
             print(str(coun)+" : NorthEast " + str(int(i)))
         coun += 1
+        line_chart = pygal.Bar()
+        line_chart.title = 'Suicide region of Thailand'
+        line_chart.add('Central', [20417/16])
+        line_chart.add('NorthEast', [18083/16])
+        line_chart.add('North', [15359/16])
+        line_chart.add('South', [8047/16])
+        line_chart.add('East', [6518/16])
+        line_chart.add('West', [4125/16])
+        line_chart.render_to_file('suicide_region.svg')
 top_part()
