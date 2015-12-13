@@ -65,6 +65,9 @@ def top_province():
             dict_city[i] = dict_city[i]//3
         else:
             dict_city[i] = dict_city[i]//16
-    print(sorted(dict_city.values()))
-    print(dict_city)
+    list_most = list(sorted(dict_city.values(), reverse=True))
+    for k, v in dict_city.items():
+        if v == list_most[0] or v == list_most[1] or v == list_most[2]\
+           or v == list_most[3] or v == list_most[4]:
+            print(k, ':', v )
 top_province()
