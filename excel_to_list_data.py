@@ -12,6 +12,7 @@ def sortsheet(file_dir, prov_max=100):
     """return list of sub-list data by enter .xls file direrctory
        to use your must call function like getsheet(dir)[code][sub]
        prov_max is maximum of province code
+       data summary has province key = 0
     """
     workbook = xlrd.open_workbook(file_dir)
     sheet = workbook.sheet_by_index(0)
