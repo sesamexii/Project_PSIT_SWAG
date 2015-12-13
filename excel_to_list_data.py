@@ -10,9 +10,10 @@ import xlrd
 #help you by sort data
 def sortsheet(file_dir, prov_max=100):
     """return list of sub-list data by enter .xls file direrctory
-       to use your must call function like getsheet(dir)[code][sub]
+       to use your must call function like getsheet(str(dir))[code][sub]
        prov_max is maximum of province code
        data summary has province key = 0
+       use '/' not '\\' in dir path
     """
     workbook = xlrd.open_workbook(file_dir)
     sheet = workbook.sheet_by_index(0)
@@ -31,5 +32,15 @@ def sortsheet(file_dir, prov_max=100):
             list_pos = 0
         data_slot[list_pos] = temp
     return data_slot
-#uncomment below to see output
-##print(sortsheet(str(input("Enter data directory: "))))
+
+###uncomment below to see output###
+##  all data  ##
+#print(sortsheet(str(input("Enter data directory: "))))
+##  easy and only one province  ##
+#all_data = sortsheet(str(input("Enter data directory: ")))
+#bangkok = all_data[10]
+#print(bangkok)
+##  specific data(bangkok male population)  ##
+#all_data = sortsheet(str(input("Enter data directory: ")))
+#bkk_male_pop = all_data[10][3]
+#print(bkk_male_pop)
