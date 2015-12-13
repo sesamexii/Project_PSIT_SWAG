@@ -24,7 +24,7 @@ def top_province():
                   file_2547, file_2548, file_2549, file_2550, file_2551, file_2552, file_2553,\
                   file_2554, file_2555, file_2556]
     dict_city = {}
-    for data in list_excel:
+    for data in list_excel[:14:]:
         workbook = xlrd.open_workbook(data)
         sheet = workbook.sheet_by_index(0)
         for i in range(6, 82):
@@ -36,11 +36,35 @@ def top_province():
                 else:
                     break
             dict_city[str(sheet.cell_value(i, 2))] += int(suicide_num)
-            if str(sheet.cell_value(i, 8)) == "นราธิวาส":
+    for data in list_excel[15::]:
+        workbook = xlrd.open_workbook(data)
+        sheet = workbook.sheet_by_index(0)
+        for i in range(4, 81):
+            dict_city.setdefault(str(sheet.cell_value(i, 3)), 0)
+            suicide_num = str(0)
+            for num in str(sheet.cell_value(i, 9)):
+                if num != '.':
+                    suicide_num = suicide_num + num
+                else:
+                    break
+            dict_city[str(sheet.cell_value(i, 3))] += int(suicide_num)
+    workbook = xlrd.open_workbook(file_2554)
+    sheet = workbook.sheet_by_index(0)
+    for i in range(3, 80):
+        dict_city.setdefault(str(sheet.cell_value(i, 3)), 0)
+        suicide_num = str(0)
+        for num in str(sheet.cell_value(i, 9)):
+            if num != '.':
+                suicide_num = suicide_num + num
+            else:
                 break
-    print(dict_city)
+        dict_city[str(sheet.cell_value(i, 3))] += int(suicide_num)
     #หาค่าเฉลี่ย
     for i in dict_city:
-        dict_city[i] = dict_city[i]//16
+        if i == 'บึงกาฬ':
+            dict_city[i] = dict_city[i]//3
+        else:
+            dict_city[i] = dict_city[i]//16
+    print(sorted(dict_city.values()))
     print(dict_city)
 top_province()
