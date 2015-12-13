@@ -11,10 +11,10 @@ def map_thailand():
     list_male = []
     list_female = []
     for i in range(4, 81):
-        list_rate.append(str(sheet.cell_value(i, 11)))
-        list_suicide.append(str(sheet.cell_value(i, 8)))
-        list_male.append(str(sheet.cell_value(i, 6)))
-        list_female.append(str(sheet.cell_value(i, 7)))
+        list_rate.append(str(sheet.cell_value(i, 12)))
+        list_suicide.append(str(sheet.cell_value(i, 9)))
+        list_male.append(str(sheet.cell_value(i, 7)))
+        list_female.append(str(sheet.cell_value(i, 8)))
         if str(sheet.cell_value(i, 8)) == "นราธิวาส":
             break
     imap = folium.Map(location=[15.0000, 100.0000], zoom_start=7)
