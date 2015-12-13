@@ -1,7 +1,8 @@
 """Graph """
 import xlrd
-def forcast_age():
-    """Write forcast_age graph in SVG file"""
+import pygal
+def forecast_age():
+    """Write forecast_age graph in SVG file"""
     file_age = "C:/Users/admin.admin-PC/Desktop/Project_PSIT_SWAG/work.xls"
     workbook = xlrd.open_workbook(file_age)
     sheet = workbook.sheet_by_index(0)
@@ -24,13 +25,28 @@ def forcast_age():
         list_age_60_69.append(int(sheet.cell_value(i, 8)))
         list_age_70_79.append(int(sheet.cell_value(i, 9)))
         list_age_80_up.append(int(sheet.cell_value(i, 10)))
-    print(list_age_0_9)
-    print(list_age_10_19)
-    print(list_age_20_29)
-    print(list_age_30_39)
-    print(list_age_40_49)
-    print(list_age_50_59)
-    print(list_age_60_69)
-    print(list_age_70_79)
-    print(list_age_80_up)
-forcast_age()
+    list_age_0_9.append(sum(list_age_0_9)/16)
+    list_age_10_19.append(sum(list_age_10_19)/16)
+    list_age_20_29.append(sum(list_age_20_29)/16)
+    list_age_30_39.append(sum(list_age_30_39)/16)
+    list_age_40_49.append(sum(list_age_40_49)/16)
+    list_age_50_59.append(sum(list_age_50_59)/16)
+    list_age_60_69.append(sum(list_age_60_69)/16)
+    list_age_70_79.append(sum(list_age_70_79)/16)
+    list_age_80_up.append(sum(list_age_80_up)/16)
+    line_chart = pygal.Line()
+    line_chart.title = 'Forecast suicide direction'
+    line_chart.x_labels = ('2540', '2541', '2542', '2543', '2544', '2545', '2546', '2547',\
+                              '2548', '2549', '2550', '2551', '2552', '2553', '2554', '2555',\
+                              '2556', 'predict')
+    line_chart.add('age 0-9', list_age_0_9)
+    line_chart.add('age 10-19', list_age_10_19)
+    line_chart.add('age 20-29', list_age_20_29)
+    line_chart.add('age 30-39', list_age_30_39)
+    line_chart.add('age 40-49', list_age_40_49)
+    line_chart.add('age 50-59', list_age_50_59)
+    line_chart.add('age 60-69', list_age_60_69)
+    line_chart.add('age 70-79', list_age_70_79)
+    line_chart.add('age 80 up', list_age_80_up)
+    line_chart.render_to_file('forecast_age.svg')
+forecast_age()
