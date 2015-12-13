@@ -15,7 +15,7 @@ def map_data(list_rate, list_suicide, list_male, list_female):
     file_2549 = "C:/Users/admin.admin-PC/Desktop/Project_PSIT_SWAG/Data/2549.xls"
     workbook = xlrd.open_workbook(file_2549)
     sheet = workbook.sheet_by_index(0)
-    for i in range(6, 81):
+    for i in range(6, 82):
         list_rate.append(str(sheet.cell_value(i, 11)))
         list_suicide.append(str(sheet.cell_value(i, 8)))
         list_male.append(str(sheet.cell_value(i, 6)))
